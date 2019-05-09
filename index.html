@@ -5,9 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Word Guess Game</title>
-    <link rel="stylesheet" href="./asset/javascript/game.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- <link rel="stylesheet" href="./asset/javascript/game.js"> -->
     <link rel="stylesheet" href="./asset/css/style.css">
+
+    
 </head>
+
+<script type="text/javascript">
+  
+
+    var listofWords = ["Basketball", "cricket", "snowboarding", "karate", "hockey"];
+    
+    var computerRandIndex = listofWords[math.floor(math.random()*5)];
+    var computerPickWord = listofWords[computerRandIndex];
+    var numberofGuessCount = 9;
+    var wins = 0;
+    var losses = 0;
+    var wrongGuessLetter = "";
+    var rightGuessLetter = "";
+    var boardGame = [];
+        
+        for (var i=0; i<computerPickWord; i++) {
+            boardGame[i]= "_";
+        }
+        // var userInput= event.key.toLowerCase();
+        // var displayBoardDiv = document.getElementById("output").innerHTML = boardGame.join (" ");
+    
+        var remainingLetters= computerRandIndex.length;
+        
+        while (remainingLetters >0 ){
+            alert(boardGame.join(" "));
+        }
+    
+    var userInput = "";
+    
+    var userInput =prompt("Guess a letter");
+    
+    document.onkeyup = function(event) {
+        userInput= event.key.toLowerCase();
+        displayBoardDiv.textContent = boardGame;
+    
+        if (computerPickWord.indexOf(userInput)>-1) {
+            boardGame[computerPickWord.indexOf(userInput)] = userInput;
+
+            for (var j =0; j<computerRandIndex.length; j++) {
+                if(computerRandIndex === userInput){
+                    boardGame[j] = userInput;
+                    remainingLetters--;
+                }
+            }
+        }
+            
+        // displayBoardDiv = document.getElementById("output")
+        //     displayBoardDiv.textContent= boardGame.join(" ");
+        //     rightGuessLetter = rightGuessLetter + userInput;
+            
+        //     document.getElementById("output").innerHTML = boardGame.join(" ");
+        // }
+    
+        // if(computerPickWord===rightGuessLetter) {
+        //         wins++;
+        //         resetGame();
+        //     }
+    
+        // else {
+        //     numberofGuessCount = numberofGuessCount - 1;
+        //     wrongGuessLetter = wrongGuessLetter + userInput + ",";
+        //     var outputWrongDiv = document.getElementById("wrongGuess");
+        //     outputWrongDiv.textContent = wrongGuessLetter;
+            // if(numberofGuessCount===0) {
+            //     loss++;
+            // }
+        
+
+      </script>
 <body>
   <h1>Word Guess Game</h1>  
   <h2>Guess Any Key To Get Started!</h2>
@@ -16,71 +89,7 @@
   <p id="letter"></p>
   <p id="wrongLetter"></p>
 
-  <script>
   
-
-var listofWords = ["Basketball", "cricket", "snowboarding", "karate", "hockey"];
-
-var computerRandIndex = math.floor(math.random()*5);
-var computerPickWord = listofWords[computerRandIndex];
-var numberofGuessCount = 9;
-var wins = 0;
-var losses = 0;
-var wrongGuessLetter = "";
-var rightGuessLetter = "";
-var boardGame = [];
-    for (var i=0; i<computerPickWord; i++) {
-        boardGame[i]= "_";
-    }
-
-var userInput = "";
-
-function resetGame (){
-    
-var listofWords = ["Basketball", "cricket", "snowboarding", "karate", "hockey"];
-
-var computerRandIndex = math.floor(math.random()*5);
-var computerPickWord = listofWords[computerRandIndex];
-var numberofGuessCount = 9 ;
-var wins = 0;
-var losses = 0;
-var wrongGuessLetter = "";
-var rightGuessLetter = "";
-var boardGame = [];
-    for (var i=0; i<computerPickWord; i++) {
-        boardGame[i]= "_";
-    }
-
-var userInput = "";  
-};
-
-// Play The Game
-
-document.onkeyup = function(event) {
-    userInput= event.key.toLowerCase();
-    var displayBoardDiv = document.getElementById("output");
-    displayBoardDiv.textContent = boardGame.join(" ");
-
-    if (computerPickWord.indexOf(userInput)>-1) {
-        boardGame[computerPickWord.indexOf(userInput)] = userInput;
-        displayBoardDiv.textContent= boardGame.join(" ");
-        rightGuessLetter = rightGuessLetter + userInput;
-        if(computerPickWord===rightGuessLetter) {
-            wins++;
-            resetGame();
-        }
-    }
-
-    else {
-        numberofGuessCount = numberofGuessCount - 1;
-        wrongGuessLetter = wrongGuessLetter + userInput + ",";
-        var outputWrongDiv = document.getElementById("wrongGuess");
-        outputWrongDiv.textContent = wrongGuessLetter;
-        if(numberofGuessCount===0) {
-            loss++;
-        }
-    }
-};
-  </script>
+  
 </body>
 </html>

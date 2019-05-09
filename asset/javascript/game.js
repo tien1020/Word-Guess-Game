@@ -22,7 +22,7 @@ var listofWords = ["Basketball", "cricket", "snowboarding", "karate", "hockey"];
 
 var computerRandIndex = math.floor(math.random()*5);
 var computerPickWord = listofWords[computerRandIndex];
-var numberofGuessCount = 9;
+var numberofGuessCount = 9 ;
 var wins = 0;
 var losses = 0;
 var wrongGuessLetter = "";
@@ -37,6 +37,8 @@ var userInput = "";
 
 // Play The Game
 
+
+
 document.onkeyup = function(event) {
     userInput= event.key.toLowerCase();
     var displayBoardDiv = document.getElementById("output");
@@ -44,7 +46,7 @@ document.onkeyup = function(event) {
 
     if (computerPickWord.indexOf(userInput)>-1) {
         boardGame[computerPickWord.indexOf(userInput)] = userInput;
-        displayBoardDiv.textContent=boardGame.join(" ");
+        displayBoardDiv.textContent= boardGame.join(" ");
         rightGuessLetter = rightGuessLetter + userInput;
         if(computerPickWord===rightGuessLetter) {
             wins++;
