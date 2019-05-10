@@ -2,8 +2,9 @@
 
 var listofWords = ["Basketball", "cricket", "snowboarding", "karate", "hockey"];
 
-var computerRandIndex = math.floor(math.random()*5);
+var computerRandIndex = Math.floor(Math.random()*5);
 var computerPickWord = listofWords[computerRandIndex];
+console.log(computerPickWord);
 var numberofGuessCount = 9;
 var wins = 0;
 var losses = 0;
@@ -16,24 +17,13 @@ var boardGame = [];
 
 var userInput = "";
 
-function resetGame (){
+
+//show computerPickWord on webpage
+// var word = document.getElementById("board");
+// word.textContent=computerPickWord;
+// function resetGame (){
     
-var listofWords = ["Basketball", "cricket", "snowboarding", "karate", "hockey"];
 
-var computerRandIndex = math.floor(math.random()*5);
-var computerPickWord = listofWords[computerRandIndex];
-var numberofGuessCount = 9 ;
-var wins = 0;
-var losses = 0;
-var wrongGuessLetter = "";
-var rightGuessLetter = "";
-var boardGame = [];
-    for (var i=0; i<computerPickWord; i++) {
-        boardGame[i]= "_";
-    }
-
-var userInput = "";  
-};
 
 // Play The Game
 
@@ -41,15 +31,18 @@ var userInput = "";
 
 document.onkeyup = function(event) {
     userInput= event.key.toLowerCase();
-    var displayBoardDiv = document.getElementById("output");
+    var displayBoardDiv = document.getElementById("board");
     displayBoardDiv.textContent = boardGame.join(" ");
 
     if (computerPickWord.indexOf(userInput)>-1) {
         boardGame[computerPickWord.indexOf(userInput)] = userInput;
-        displayBoardDiv.textContent= boardGame.join(" ");
+       displayBoardDiv.textContent= boardGame.join(" ");
         rightGuessLetter = rightGuessLetter + userInput;
         if(computerPickWord===rightGuessLetter) {
             wins++;
+            wins = document.getElementById ("wins");
+            numberofGuessCount = (numberofGuessCount + 1);
+            numberofGuessCount = document.getElementById("numberGuess");
             resetGame();
         }
     }
@@ -63,4 +56,5 @@ document.onkeyup = function(event) {
             loss++;
         }
     }
-};
+};                                               
+
