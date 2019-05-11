@@ -5,24 +5,41 @@ var listofWords = ["Basketball", "cricket", "snowboarding", "karate", "hockey"];
 var computerRandIndex = Math.floor(Math.random()*5);
 var computerPickWord = listofWords[computerRandIndex];
 console.log(computerPickWord);
+var numberofGuessCount =document.getElementById("numberGuesses");
 var numberofGuessCount = 9;
-var wins = 0;
-var losses = 0;
-var wrongGuessLetter = "";
-var rightGuessLetter = "";
+
+var wrongGuessLetter = [];
+var rightGuessLetter = [];
 var boardGame = [];
     for (var i=0; i<computerPickWord; i++) {
         boardGame[i]= "_";
+        
     }
+// var currentWordDisplay = document.getElementById("current-word");
 
 var userInput = "";
+var wins = 0;
+// wins = document.getElementById ("wins");
+var losses = 0;
 
 
-//show computerPickWord on webpage
-// var word = document.getElementById("board");
-// word.textContent=computerPickWord;
-// function resetGame (){
-    
+function restart() {
+    document.getElementById("current-word") = ""
+    document.getElementById("numberGuesses") = "9"
+    numberofGuessCount = 9
+    userInput = ""
+    calculateComputer()
+  }
+  
+
+  function print(){
+	document.getElementById("numberGuesses")=numberofGuessCount;
+	document.getElementById("wins") = wins;
+
+}
+
+ this.wins=0;
+ this.numberofGuessCount=9;   
 
 
 // Play The Game
@@ -31,7 +48,7 @@ var userInput = "";
 
 document.onkeyup = function(event) {
     userInput= event.key.toLowerCase();
-    var displayBoardDiv = document.getElementById("board");
+    var displayBoardDiv = document.getElementById("current-word");
     displayBoardDiv.textContent = boardGame.join(" ");
 
     if (computerPickWord.indexOf(userInput)>-1) {
@@ -40,10 +57,9 @@ document.onkeyup = function(event) {
         rightGuessLetter = rightGuessLetter + userInput;
         if(computerPickWord===rightGuessLetter) {
             wins++;
-            wins = document.getElementById ("wins");
-            numberofGuessCount = (numberofGuessCount + 1);
-            numberofGuessCount = document.getElementById("numberGuess");
-            resetGame();
+            document.getElementById("wins").innerHTML = " " + wins;
+            
+            restart();
         }
     }
 
@@ -53,8 +69,27 @@ document.onkeyup = function(event) {
         var outputWrongDiv = document.getElementById("wrongGuess");
         outputWrongDiv.textContent = wrongGuessLetter;
         if(numberofGuessCount===0) {
-            loss++;
+            losses++;
+            document.getElementById("losses") = " " + losses;
+            restart();
         }
     }
-};                                               
+};                   
+
+// function start() {
+//     console.log("start")
+//     document.querySelector("#wins").innerHTML = " 0"   //clear all the variables
+//     document.querySelector("#losses").innerHTML = " 0"   //clear all the variables
+//     document.querySelector("#numberGuesses").innerHTML = " 8"
+//     calculateComputer()
+//    }
+   
+//    //clear board and restart the game after win or all guesses are used
+//    function restart() {
+//     document.querySelector("#wrongGuess").innerHTML = ""
+//     document.querySelector("#numberGuesses").innerHTML = " 9"
+//     remainingGuesses = 9
+//     lettersUsed = ""
+//     calculateComputer()
+//    }
 
