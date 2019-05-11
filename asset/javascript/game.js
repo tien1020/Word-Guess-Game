@@ -15,15 +15,14 @@ var boardGame = [];
         boardGame[i]= "_";
         
     }
-// var currentWordDisplay = document.getElementById("current-word");
 
 var userInput = "";
 var wins = 0;
 // wins = document.getElementById ("wins");
 var losses = 0;
 var remainingGuesses = 0;
-var gameStarted = false;        // Flag to tell if the game has started
-var hasFinished = false; 
+// var gameStarted = false;        
+// var hasFinished = false; 
 
 
 function resetGame() {
@@ -46,9 +45,9 @@ function resetGame() {
         boardGame[i]= "_";
         
     }
-    wins = 0;
+    // wins = 0;
 // wins = document.getElementById ("wins");
- losses = 0;
+//  losses = 0;
 remainingGuesses = 0;
     
   }
@@ -89,19 +88,21 @@ document.onkeyup = function(event) {
         outputWrongDiv.textContent = wrongGuessLetter;
         if(numberofGuessCount===0) {
             losses++;
-            document.getElementById("numberGuesses") = " " + losses;
+            document.getElementById("losses") = " " + losses;
             resetGame();
         }
     }
 };                   
 
-// function start() {
-//     console.log("start")
-//     document.querySelector("#wins").innerHTML = " 0"   //clear all the variables
-//     document.querySelector("#losses").innerHTML = " 0"   //clear all the variables
-//     document.querySelector("#numberGuesses").innerHTML = " 8"
-//     calculateComputer()
-//    }
+function start() {
+    console.log("start")
+    document.getElementById("wins").innerHTML = wins;   //clear all the variables
+    document.getElementById("numberGuesses").innerHTML = numberofGuessCount;
+    // calculateComputer()
+   }
+
+
+start();
    
 //    //clear board and restart the game after win or all guesses are used
 //    function restart() {
