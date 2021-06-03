@@ -1,2 +1,2 @@
 # Word-Guess-Game
-[embed].access/wordguess.pdf[/embed]
+[embed].asset/wordguess.pdf[/embed]
